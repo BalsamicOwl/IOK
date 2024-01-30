@@ -1,0 +1,19 @@
+title: hCaptcha
+description: To make it harder to analysts to get a good capture of a phishing site, some are using hCaptcha.
+references:
+  - https://docs.hcaptcha.com/
+
+detection:
+  buttonElement:
+    html|contains|all:
+      - "h-captcha"
+      - "data-sitekey"
+
+  programmaticInvoke:
+    js|contains:
+      - "hcaptcha.render("
+
+  condition: buttonElement or programmaticInvoke
+
+tags:
+  - anti-analysis
